@@ -4,13 +4,15 @@ import bodyParser from 'body-parser';
 import Stats from './handlers/Stats.js';
 import CallResult from './handlers/CallResult.js';
 import { onlyDigits } from './handlers/checking.js';
+import multer from 'multer';
 
-const stats = {};
+const upload = multer({ dest: 'uploads/' })
 
 export default () => {
     const app = new Express();
 
     app.set('view engine', 'pug');
+    app.use('/uploads', Express.static('uploads'))
     app.use(bodyParser.urlencoded({ extended: true }));
 
     app.get('/', (request, response) => {
@@ -55,6 +57,10 @@ export default () => {
 
     app.get('/uploadHeroImage', (request, response) => {        
         response.render('forms/uploadimage');
+    })
+
+    app.get('/getHeroImage', (request, response) => {
+        response.render('forms/getimage');
     })
 
     return app;
