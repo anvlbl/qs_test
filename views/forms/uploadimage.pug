@@ -1,0 +1,11 @@
+extends ../layouts/app.pug 
+
+block content
+  p Upload Hero Avatar
+    form(action='/uploadHeroImage' method='post')
+      div         
+        | Choose the image
+        input(type='file' name='name')
+
+      p 
+        input(type='submit' value='Send')

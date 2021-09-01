@@ -1,0 +1,30 @@
+extends ../layouts/app.pug 
+
+block content
+  p Set Hero Stats
+    form(action='/setHeroStats' method='post')
+      div 
+        label
+          | Name of your Hero
+        input(name='name' value=form.name)
+      div 
+        label
+          | Strength
+        input(name='strength' value=form.strength)
+      div
+        label
+          | Dexterity
+        input(name='dexterity' value=form.dexterity)
+      div
+        label
+          | Intellect 
+        input(name='intellect' value=form.intellect)
+      div 
+        label 
+          | Your Hero is Invinsible?
+        p True 
+          input(type='radio' name='isInvincible' value='true')
+        p False
+          input(type='radio' name='isInvincible' value='false') 
+      p 
+        input(type='submit' value='Send')
