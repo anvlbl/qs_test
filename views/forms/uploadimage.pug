@@ -2,10 +2,13 @@ extends ../layouts/app.pug
 
 block content
   p Upload Hero Avatar
-    form(action='/uploadHeroImage' method='post')
+    form(action='/uploadHeroImage' method='post' enctype='multipart/form-data')
       div         
         | Choose the image
-        input(type='file' name='name')
+      p
+        input(type='file' name='image')
 
       p 
         input(type='submit' value='Send')
+      p 
+        a(href="/") Back to main page   

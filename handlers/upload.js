@@ -2,10 +2,10 @@ import multer from "multer";
 
 const storage = multer.diskStorage({
     destination(req, file, cb) {
-        cb(null, '../uploads')
+        cb(null, './uploads')
     },
     filename(req, file, cb) {
-        cb(null, 'avatar')
+        cb(null, 'avatar.jpg')
     }
 })
 
@@ -21,10 +21,4 @@ const limits = {
     fileSize: 1024 * 1024,
 }
 
-const config = multer({
-    storage: storage,
-    fileFilter: fileFilter,
-    fileSize: fileSize,
-})
-
-export { uploadConfig };
+export default multer({ storage, fileFilter, limits })

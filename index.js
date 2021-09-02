@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import Stats from './handlers/Stats.js';
 import CallResult from './handlers/CallResult.js';
 import { onlyDigits } from './handlers/checking.js';
-import { uploadConfig } from './handlers/upload.js';
+import uploadConfig from './handlers/upload.js';
 
 export default () => {
   const app = new Express();
@@ -56,8 +56,15 @@ export default () => {
       .catch(err => response.send('error of reading file'))
   })
 
+  //форма загрузки аватарки
   app.get('/uploadHeroImage', (request, response) => {        
     response.render('forms/uploadimage');
+  })
+
+  app.post('/uploadHeroImage', uploadConfig.single('image'), (request, response) => {
+    console.log(request.body);
+    console.log(request.file);
+    response.send('file was uploaded <p><a href="/"> back to main page');
   })
 
   //маршрут для отображения аватарки персонажа
